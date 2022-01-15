@@ -21,11 +21,12 @@
 
 // When a user refreshes or returns to the brower page, the win and loss counts should persist.
 
-// pull a random word
+// pull a random word <<done>>
 // hide the word letter by letter
 // set a timer to 10 seconds <<done>>
 // when correct button is pressed, the letter appears on screen
 // when time is up or all letters appear on screen round is over
+// <<done>>
 // mark total wins and losses
 
 // set timer
@@ -65,8 +66,16 @@ let myWords = ["tomato", "potato", "cucumber", "zuccini", "carrot", "soap", "too
 
 let randWord = myWords[Math.floor(Math.random() * myWords.length)];
 
+let wordArray = randWord.split("");
+console.log(wordArray);
+
+
 function keyDown(event) {
   let userChoice = event.key;
   console.log(userChoice);
 }
 
+
+// add li items for each letter in array
+// make li items hidden
+// 
