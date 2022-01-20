@@ -30,8 +30,11 @@
 // mark total wins and losses
 
 // set timer
-let timeEl = document.querySelector(".time");
 
+let guessWord = ""
+let WinLossCount = 0
+let timeEl = document.querySelector(".time");
+let countEl = document.querySelector(".count");
 var startButton = document.getElementById("start");
 
 document.addEventListener("keydown", keyDown)
@@ -41,9 +44,12 @@ let secondsLeft = true;
 startButton.addEventListener("click", function(event) {
   event.preventDefault();
   console.log("button clicked");
+  guessWord = ""
   if(secondsLeft == 0 || secondsLeft == true){
   timer();
+  
   }
+ 
 });
 
 function timer() {  
@@ -55,11 +61,23 @@ function timer() {
     if (secondsLeft == 0) {
       clearInterval(timerInterval);
       timeEl.textContent = "Out of time";
+      if(randWord == guessWord)
+
+       {
+         WinLossCount = parseInt(WinLossCount) + 1
+        countEl.textContent = "Total win " + WinLossCount
+        }
+  else{
+  WinLossCount = parseInt(WinLossCount) - 1
+  countEl.textContent =  "Total loss " + WinLossCount
+  }
+
     } else {
 
     }
   }, 1000);
 }
+
 
 
 let myWords = ["tomato", "potato", "cucumber", "zuccini", "carrot", "soap", "toothpaste", "eggs", "milk"];
@@ -70,9 +88,13 @@ let wordArray = randWord.split("");
 console.log(wordArray);
 
 
+
 function keyDown(event) {
   let userChoice = event.key;
-  console.log(userChoice);
+
+  //console.log(userChoice);
+  guessWord = guessWord.concat(userChoice);
+  console.log(guessWord);
 }
 
 
